@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{'/css/base.css'}"/>
+    <link rel="stylesheet" th:href="@{'/css/index.css'}"/>
+    <title>Index</title>
+</head>
+<body class="text-center">
+<div>
+    <div th:replace="base :: header"></div>
+    <div id="main">
+        <h3>Home</h3>
+        <a th:href="@{'/patients'}" class="links">Patient Page</a> <br>
+        <a th:href="@{'/login'}" class="links">Login</a> <br>
+        <a th:href="@{'/register'}" class="links">Register</a>
+    </div>
+    <p>Patient Management Web App to allow easy CRUD functionality for patients as well as patient data upload and download</p>
+    <footer th:replace="base :: footer"></footer>
+</div>
+</body>
+</html>

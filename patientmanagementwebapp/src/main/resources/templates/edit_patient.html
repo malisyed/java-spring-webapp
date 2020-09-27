@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{'/css/base.css'}"/>
+    <link rel="stylesheet" th:href="@{'/css/edit_patient.css'}"/>
+    <title>Edit Patient</title>
+</head>
+<body>
+<div align="center">
+    <div th:replace="base :: header"></div>
+    <div id="main">
+    <h3>Edit Patient</h3>
+    <form action="#" th:action="@{/saveNewPatient}" th:object="${patient}" method="post">
+        <table border="1" cellpadding="10" id="main-table">
+            <tr>
+                <td> Patient ID: </td>
+                <td> <input type="text" th:field="*{patientID}"> </td>
+            </tr>
+            <tr>
+                <td> Patient SSN: </td>
+                <td> <input type="text" th:field="*{SSN}"> </td>
+            </tr>
+            <tr>
+                <td> Patient First Name: </td>
+                <td> <input type="text" th:field="*{first}"> </td>
+            </tr>
+            <tr>
+                <td> Patient Last Name: </td>
+                <td> <input type="text" th:field="*{last}"> </td>
+            </tr>
+            <tr>
+                <td> Patient Ethnicity: </td>
+                <td> <input type="text" th:field="*{ethnicity}"> </td>
+            </tr>
+            <tr>
+                <td> Patient Gender: </td>
+                <td> <input type="text" th:field="*{gender}"> </td>
+            </tr>
+            <tr>
+                <td> Patient Zip: </td>
+                <td> <input type="text" th:field="*{zip}"> </td>
+            </tr>
+            <tr>
+                <td> <input type="submit" value="Save"> </td>
+            </tr>
+        </table>
+    </form>
+    </div>
+    <footer th:replace="base :: footer"></footer>
+</div>
+</body>
+</html>

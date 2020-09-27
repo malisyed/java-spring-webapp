@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="header" class="cover-container d-flex h-100 p-3 mx-auto flex-column" th:fragment="header">
+    <header class="masthead mb-auto">
+        <div id="nav-div"  class="inner">
+            <nav class="nav nav-masthead justify-content-center">
+                <h1 id="title"><a th:href="@{'/home'}" id="home-link">Patient Management</a></h1>
+                <a th:href="@{'/home'}" class="nav-link">Home</a>
+                <a th:href="@{'/patients'}" class="nav-link">Patient Page</a>
+                <a th:href="@{'/addPatient'}" class="nav-link" sec:authorize="isAuthenticated()">Add Patient</a>
+                <a th:href="@{'/login'}" sec:authorize="isAnonymous()" class="nav-link">Login</a>
+                <a th:href="@{'/register'}" sec:authorize="isAnonymous()" class="nav-link">Register</a>
+                <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()" id="logout-form">
+                    <input type="submit" value="Logout">
+                </form>
+            </nav>
+        </div>
+    </header>
+</div>
+<footer th:fragment="footer">
+    <p>Spring Boot Web Application made by Mohammad Ali Syed</p>
+</footer>
+</body>
+</html>

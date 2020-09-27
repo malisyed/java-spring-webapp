@@ -1,0 +1,10 @@
+#main-table{
+    border: none;
+    border-color: white;
+}
+
+#main{
+    width: 600px;
+    margin: auto;
+    text-align: left;
+}

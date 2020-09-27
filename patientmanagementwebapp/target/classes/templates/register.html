@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{'/css/base.css'}"/>
+    <link rel="stylesheet" th:href="@{'/css/register.css'}"/>
+    <title>Register</title>
+</head>
+<body>
+<div align="center">
+    <div th:replace="base :: header"></div>
+    <div id="main">
+        <h3>Register</h3>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <p>First Name: <input type="text" th:field="*{first}"></p>
+            <p>Last Name: <input type="text" th:field="*{last}" ></p>
+            <p>Email: <input type="email" th:field="*{email}"></p>
+            <p>Password: <input type="password" th:field="*{password}"></p>
+            <input type="submit" value="Submit">
+            <span th:utext="${successMessage}" id="error-msg"></span>
+        </form>
+    </div>
+    <footer th:replace="base :: footer"></footer>
+</div>
+</body>
+</html>

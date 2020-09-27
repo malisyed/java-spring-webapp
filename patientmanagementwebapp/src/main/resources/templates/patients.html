@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{'/css/base.css'}"/>
+    <link rel="stylesheet" th:href="@{'/css/patients.css'}"/>
+    <title>Patient Page</title>
+</head>
+<body>
+<div align="center">
+    <div th:replace="base :: header"></div>
+    <div id="main">
+        <div id="options-div">
+            <form sec:authorize="hasAnyAuthority('Admin')" th:action="@{/fileUpload}" method="post" enctype="multipart/form-data">
+                <p>Upload Patient JSON File: <input type="file" name="file" accept=".json"><input type="submit" value="Upload"></p>
+            </form>
+            <form sec:authorize="hasAnyAuthority('Admin')" th:action="@{|/patientsJSON|}" method="get">
+                <p>Download Patient Data (JSON Format): <input type="submit" value="Download Patient Data"> </p>
+            </form>
+        </div>
+        <table border="1", cellpadding="10">
+            <thead>
+                <tr>
+                    <th class="table-head">Patient ID</th>
+                    <th class="table-head">SSN</th>
+                    <th class="table-head">First</th>
+                    <th class="table-head">Last</th>
+                    <th class="table-head">Ethnicity</th>
+                    <th class="table-head">Gender</th>
+                    <th class="table-head">Zip</th>
+                    <th sec:authorize="hasAnyAuthority('Admin')" class="table-head">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="patient : ${listPatients}">
+                    <td th:text="${patient.patientID}">PatientID</td>
+                    <td th:text="${patient.SSN}">SSN</td>
+                    <td th:text="${patient.getFirst()}">First</td>
+                    <td th:text="${patient.getLast()}">Last</td>
+                    <td th:text="${patient.getEthnicity()}">Ethnicity</td>
+                    <td th:text="${patient.getGender()}">Gender</td>
+                    <td th:text="${patient.getZip()}">Zip</td>
+                    <td sec:authorize="hasAnyAuthority('Admin')">
+                        <a th:href="@{'/editPatient/' + ${patient.getID()}}" id="edit-patient">Edit</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a th:href="@{'/deletePatient/' + ${patient.getID()}}" id="delete-patient">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<!--    </main>-->
+    <footer th:replace="base :: footer"></footer>
+</div>
+</body>
+</html>

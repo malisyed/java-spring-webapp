@@ -1,0 +1,10 @@
+#main{
+    width: 600px;
+    margin: auto;
+    text-align: left;
+}
+
+.links{
+    color: blue;
+    text-decoration: underline;
+}

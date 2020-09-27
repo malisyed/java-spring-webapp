@@ -1,0 +1,23 @@
+#main{
+    display: inline-block;
+}
+
+#options-div{
+    width: 100%;
+    text-align: left;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.table-head{
+    border: 2px solid black;
+}
+
+#delete-patient{
+    color: red;
+}
+
+#edit-patient{
+    color: blue;
+}
